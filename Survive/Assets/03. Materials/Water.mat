@@ -87,7 +87,7 @@ Material:
     - _BUILTIN_QueueControl: 0
     - _BUILTIN_QueueOffset: 0
     - _BumpScale: 1
-    - _Curvature: -0.015
+    - _Curvature: -0.002
     - _Cutoff: 0.5
     - _DetailNormalMapScale: 1
     - _DstBlend: 0
@@ -100,12 +100,12 @@ Material:
     - _Parallax: 0.02
     - _RippleDensity: 7
     - _RippleSlimness: 5
-    - _RippleSpeed: 1
+    - _RippleSpeed: 1.5
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
     - _SrcBlend: 1
     - _UVSec: 0
-    - _WaveSpeed: 0.1
+    - _WaveSpeed: 0.08
     - _ZWrite: 1
     m_Colors:
     - _BaseColor: {r: 0.22745098, g: 0.5803922, b: 0.9372549, a: 0}
