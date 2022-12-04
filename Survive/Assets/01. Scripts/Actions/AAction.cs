@@ -1,0 +1,36 @@
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public abstract class AAction : SAction
+{
+    //When clicking on a Selectable in the scene
+    public override void DoAction(PlayerCharacter character, Selectable select)
+    {
+
+    }
+
+    //When right-clicking (or pressing Use) a ItemData in inventory
+    public override void DoAction(PlayerCharacter character, ItemSlot slot)
+    {
+
+    }
+
+    //When left-clicking (or selecting) a ItemData in inventory
+    public virtual void DoSelectAction(PlayerCharacter character, ItemSlot slot)
+    {
+
+    }
+
+    //Condition to check if the selectable action is possible
+    public override bool CanDoAction(PlayerCharacter character, Selectable select)
+    {
+        return true; //No condition
+    }
+
+    //Condition to check if the item action is possible
+    public override bool CanDoAction(PlayerCharacter character, ItemSlot slot)
+    {
+        return true; //No condition
+    }
+}

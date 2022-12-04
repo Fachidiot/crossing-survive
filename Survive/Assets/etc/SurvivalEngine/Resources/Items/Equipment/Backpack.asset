@@ -39,7 +39,7 @@ MonoBehaviour:
   equip_slot: 50
   equip_side: 0
   armor: 0
-  bag_size: 5
+  bag_size: 10
   equip_bonus: []
   weapon_type: 0
   damage: 0

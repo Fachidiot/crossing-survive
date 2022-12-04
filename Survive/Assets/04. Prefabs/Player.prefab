@@ -69,9 +69,9 @@ CapsuleCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   m_Radius: 0.4
-  m_Height: 1.8235567
+  m_Height: 1.8359635
   m_Direction: 1
-  m_Center: {x: 0, y: 0.91177833, z: 0}
+  m_Center: {x: 0, y: 0.9055749, z: 0}
 --- !u!114 &8331669084398140778
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -156,7 +156,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9e5295202cff30241be8d7d926dcd78b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  inventory_size: 15
+  inventory_size: 10
   starting_items: []
 --- !u!114 &8331669084398140782
 MonoBehaviour:
@@ -264,7 +264,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4596640331168922, guid: 5384b0579aea21545b42e1e5bd2f4cc0, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 0.15
       objectReference: {fileID: 0}
     - target: {fileID: 4596640331168922, guid: 5384b0579aea21545b42e1e5bd2f4cc0, type: 3}
       propertyPath: m_LocalPosition.z
