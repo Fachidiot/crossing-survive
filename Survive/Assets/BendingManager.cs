@@ -4,7 +4,7 @@ using UnityEngine.Rendering;
 [ExecuteAlways] // 에디트 모드 나 플레이 모드일때 항상 실행
 public class BendingManager : MonoBehaviour
 {
-    static float cullingDepth = 180;
+    static float cullingDepth = 100;
 
     #region Constants
     const string BENDING_FEATURE = "ENABLE_BENDING";
