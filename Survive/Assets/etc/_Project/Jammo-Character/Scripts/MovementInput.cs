@@ -17,19 +17,12 @@ public class MovementInput : MonoBehaviour
     public float InputZ;
     public bool InputRun;
     public Vector3 desiredMoveDirection;
-    public bool blockRotationPlayer;
     public float desiredRotationSpeed = 0.1f;
     public Animator anim;
     public float Speed;
     public float allowPlayerRotation = 0.1f;
     public Camera cam;
-
-    [Space]
-    [Header("Player Grounded")]
     public bool Grounded = true;
-    public float GroundedOffset = -0.14f;
-    public float GroundedRadius = 0.28f;
-    public LayerMask GroundLayers;
 
     [Space]
     [Header("Animation Smoothing")]
@@ -74,16 +67,6 @@ public class MovementInput : MonoBehaviour
         controller.Move(moveVector);
     }
 
-    void GroundedCheck()
-    {
-        // 발밑에 생성할 구체 위치값
-        Vector3 spherePosition = new Vector3(transform.position.x, transform.position.y - GroundedOffset, transform.position.z);
-        Grounded = Physics.CheckSphere(spherePosition, GroundedRadius, GroundLayers, QueryTriggerInteraction.Ignore);
-
-        anim.SetBool("Ground", Grounded);
-        // 만약 플레이어가 무한점프를 한다면 플레이어의 Layer와 GroundLayer 충돌 확인
-    }
-
     void PlayerMoveAndRotation()
     {
         InputX = Input.GetAxis("Horizontal");
@@ -102,13 +85,16 @@ public class MovementInput : MonoBehaviour
 
         desiredMoveDirection = forward * InputZ + right * InputX;
 
-        if (blockRotationPlayer == false)
+        transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(desiredMoveDirection), desiredRotationSpeed);
+        if (!InputRun)
         {
-            transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(desiredMoveDirection), desiredRotationSpeed);
-            if (!InputRun)
-                controller.Move(desiredMoveDirection * Time.deltaTime * Velocity);
-            else
-                controller.Move(desiredMoveDirection * Time.deltaTime * (Velocity + 2.5f));
+            controller.Move(desiredMoveDirection * Time.deltaTime * Velocity);
+            anim.SetFloat("Blend", 0.6f);
+        }
+        else
+        {
+            controller.Move(desiredMoveDirection * Time.deltaTime * (Velocity + 4f));
+            anim.SetFloat("Blend", 1.2f);
         }
     }
 
@@ -141,7 +127,7 @@ public class MovementInput : MonoBehaviour
         //Physically move player
         if (Speed > allowPlayerRotation)
         {
-            anim.SetFloat("Blend", Speed, StartAnimTime, Time.deltaTime);
+            // anim.SetFloat("Blend", Speed, StartAnimTime, Time.deltaTime);
             PlayerMoveAndRotation();
         }
         else if (Speed < allowPlayerRotation)

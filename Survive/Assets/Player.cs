@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
+    public Transform m_Transform;
     public bool canSwim;
     public bool fishing;
     public bool isGround;
@@ -12,6 +13,7 @@ public class Player : MonoBehaviour
 
     void Start()
     {
+        m_Transform = GetComponent<Transform>();
         animator = GetComponent<Animator>();
     }
 
@@ -34,5 +36,14 @@ public class Player : MonoBehaviour
     {
         if (other.gameObject.layer == LayerMask.NameToLayer("Water"))
             animator.SetBool("swim", false);
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.tag == "Portal")
+        {
+            m_Transform.position = other.GetComponent<Portal>().m_Position;
+            Debug.Log(other.GetComponent<Portal>().m_Position);
+        }
     }
 }
